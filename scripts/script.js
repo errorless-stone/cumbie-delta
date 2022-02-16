@@ -16,6 +16,14 @@ $(document).ready(function () {
       console.log('from ln 12', generateCoolNameFacts(userName));
       
       $("#coolNameFactsOutput").html(coolFacts);
+
+      $('#btnGetFacts').html(
+        '<button id="btnGetFacts" class="btn btn-secondary">click to play again</button>'
+      )
+
+      $('#btnGetFacts').click(function(){
+        location.reload();
+      });
   
 
 
@@ -29,8 +37,8 @@ function generateCoolNameFacts(userName) {
   
   coolFacts = nameLength(userName);
   coolFacts += " <br> " + nameStart(userName);
-  coolFacts += "<h1> " + nameEnd(userName) + "</h3>";
-  coolFacts += "<h1>"+ nameLuckyNums(userName) + "</h2>";
+  coolFacts += "<br>" + nameEnd(userName);
+  coolFacts += "<br>" + "Your Lucky number is " + userLuckyNum;
 
   console.log("initialized the'm coolFacts variable: " + coolFacts); 
 
@@ -52,13 +60,4 @@ function nameEnd(name) {
   return "the last letter of your name is " + name[lastIndex]
 }
 
-function nameLuckyNums(name){
-
-  let luckyNum = name.length % 2
-  if (luckyNum ==1){
-    return "Your lucky numbers are odd"
-  }
-  else{
-    return "Your lucky numbers are even"
-  }
-}
+var userLuckyNum = 1 + Math.floor(Math.random() * 100);
